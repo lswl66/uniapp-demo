@@ -1,9 +1,9 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view>
-			<text class="title">{{title}}</text>
-		</view>
+		<img src="/static/logo.png" alt="logo.png" class="logo"/>
+		<div>
+			<div class="title">{{title}}</div>
+		</div>
 	</view>
 </template>
 
@@ -11,11 +11,23 @@
 export default {
   data() {
     return {
-      title: 'Hello'
+      title: '首页'
     }
   },
+  created() {
+    console.log('creaded')
+  },
   onLoad() {
-
+    console.log('onload')
+  },
+  onShow() {
+    console.log('onshow')
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  onReady() {
+    console.log('onReady')
   },
   methods: {
 
