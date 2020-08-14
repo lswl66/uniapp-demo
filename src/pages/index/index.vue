@@ -1,10 +1,16 @@
 <template>
-	<view class="content">
-		<img src="/static/logo.png" alt="logo.png" class="logo"/>
-		<div>
-			<div class="title">{{title}}</div>
+	<div>
+		<div class="header">
+			<div class="header-bg">
+				<a href="#">
+					<span>
+						<i class="iconfont iconsearch"></i>
+						寻找宝贝店铺
+					</span>
+				</a>
+			</div>
 		</div>
-	</view>
+	</div>
 </template>
 
 <script>
@@ -14,48 +20,41 @@ export default {
       title: '首页'
     }
   },
+  methods: {
+
+  },
   created() {
     console.log('creaded')
   },
-  onLoad() {
-    console.log('onload')
-  },
-  onShow() {
-    console.log('onshow')
-  },
   mounted() {
     console.log('mounted')
-  },
-  onReady() {
-    console.log('onReady')
-  },
-  methods: {
-
   }
 }
 </script>
 
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin: 200rpx auto 50rpx auto;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+<style lang="scss" scoped>
+	@import "../../static/css/theme.scss";
+	.header {
+		width: 100%;
+		height: 74rpx;
+		background-color: $themeColor;
+		&-bg{
+			height: 50rpx;
+			line-height: 50rpx;
+			text-align: center;
+			color: rgb(240,224,220);
+			font-size: 13px;
+			padding: 12rpx 18rpx 12rpx 84rpx;
+			background-image: url(/static/imgs/index/taobaoLogo.png);
+			background-repeat: no-repeat;
+			background-size: 54rpx 40rpx;
+			background-position: 18rpx center;
+			a{
+				display: block;
+				width: 100%;
+				border-radius: 8rpx;
+				background-color: $themeDeepColor;
+			}
+		}
 	}
 </style>

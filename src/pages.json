@@ -45,7 +45,9 @@
 				"iconPath": "/static/imgs/tabbar/my.png",
 				"selectedIconPath": "/static/imgs/tabbar/myed.png"
 			}
-		]
+		],
+		"color": "#5d656b",
+		"selectedColor": "#5d656b"
 	}
 }
  
