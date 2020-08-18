@@ -18,6 +18,7 @@ export default {
   *{
     margin: 0px auto;
     padding: 0px;
+    text-decoration: none;
   }
   html,
   body{
@@ -25,5 +26,18 @@ export default {
     height: 100%;
     font-family: Helvetica;
     background-color: $backColorGrey;
+  }
+// 设置iconfot图标的统一样式
+  .iconfont{
+    display: inline-block;
+    margin-right: 2px;
+  }
+// 去除页面滚动条
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+    height: 0 !important;
+    -webkit-appearance: none;
+    background: transparent;
   }
 </style>
