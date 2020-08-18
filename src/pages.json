@@ -1,7 +1,13 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index"
+			"path": "pages/index/index",
+			"style": {
+				"app-plus": {
+					//app页面不显示滚动条
+					"scrollIndicator": "none"
+				}
+			}
 		},
 		{
 			"path": "pages/cart/cart"
@@ -11,6 +17,9 @@
 		},
 		{
 			"path": "pages/mytaobao/mytaobao"
+		},
+		{
+			"path": "pages/goodsDetails/goodsDetails"
 		}
 	],
 	"globalStyle": {
