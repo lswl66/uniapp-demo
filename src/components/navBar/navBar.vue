@@ -1,24 +1,29 @@
 <template>
 	<view class="content">
     <div class="shelter"></div>
-    <div class="nav-list" ref="navList">
-      <div
-        class="nav-item"
-        v-for="item in navList"
-        :key="item.id">
-        <div class="inner">
-          <navigator v-if="item.titleTop" :url="item.urlTop">
-            <img :src="item.navIconTop" :alt="item.titleTop+'导航图标'">
-            <div>{{item.titleTop}}</div>
-          </navigator>
+    <div class="nav-list">
+      <scroll-view
+        class="nav-list-inner"
+        scroll-x="true"
+        @scroll="scroll">
+        <div
+          class="nav-item"
+          v-for="item in navList"
+          :key="item.id">
+          <div class="inner">
+            <navigator v-if="item.titleTop" :url="item.urlTop">
+              <img :src="item.navIconTop" :alt="item.titleTop+'导航图标'">
+              <div>{{item.titleTop}}</div>
+            </navigator>
+          </div>
+          <div class="inner">
+            <navigator v-if="item.titleBottom" :url="item.urlBottom">
+              <img :src="item.navIconBottom" :alt="item.titleBottom+'导航图标'">
+              <div>{{item.titleBottom}}</div>
+            </navigator>
+          </div>
         </div>
-        <div class="inner">
-          <navigator v-if="item.titleBottom" :url="item.urlBottom">
-            <img :src="item.navIconBottom" :alt="item.titleBottom+'导航图标'">
-            <div>{{item.titleBottom}}</div>
-          </navigator>
-        </div>
-      </div>
+      </scroll-view>
     </div>
     <div class="slider">
       <div class="track">
@@ -32,8 +37,8 @@
 export default {
   watch: {
     navListX(val) {
-      console.log(val)
-      // return this.trackSliderX
+      console.log(val / 5.75)
+      this.trackSliderX = val / 5.75
     }
   },
   data() {
@@ -131,7 +136,8 @@ export default {
         }
       ],
       navListX: 0,
-      trackSliderX: 0
+      trackSliderX: 0,
+      intervalId: ''
     }
   },
   created() {
@@ -139,13 +145,23 @@ export default {
   },
   mounted() {
     console.log('mounted')
-    this.scroll()
+    // this.scroll()
+    // #ifdef H5
     // this.$refs['navList'].addEventListener('scroll', this.scroll)
+    // #endif
   },
   methods: {
-    scroll() {
+    scroll(val) {
+      // console.log(val)
+      // this.intervalId = setInterval(() => {
+      //   if (this.intervalId) {
+      //     clearInterval(this.intervalId)
+      //   }
+      //   this.navListX = val.detail.scrollLeft
+      // }, 1000)
+      this.navListX = val.detail.scrollLeft
       // #ifdef H5
-      this.navListX = this.$refs['navList'].childNodes.getBoundingClientRect().left
+      // this.navListX = this.$refs['navList'].childNodes.getBoundingClientRect().left
       // #endif
       // console.log(this.$refs['navList'].firstChild.getBoundingClientRect())
     }
@@ -163,18 +179,24 @@ export default {
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
-  .nav-list{
-    display: flex;
-    justify-content: flex-start;
+  .nav-list-inner{
+    // display: flex;
+    // flex-wrap: nowrap;
+    // justify-content: flex-start;
+    width: 100%;
     height: 312rpx;
     font-size: 22rpx;
     color: $fontColorGrey;
     background-color: #fff;
-    overflow-x: auto;
+    white-space: nowrap;
+    // overflow-x: auto;
     .nav-item{
+      display: inline-block;
       width: 122rpx;
+      height: 300rpx;
       margin-left: 23rpx;
       text-align: center;
+      vertical-align: top;
       .inner:first-child{
         margin-top: 6rpx;
       }
