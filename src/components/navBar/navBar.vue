@@ -8,7 +8,7 @@
         @scroll="scroll">
         <div
           class="nav-item"
-          v-for="item in navList"
+          v-for="item in dataList"
           :key="item.id">
           <div class="inner">
             <navigator v-if="item.titleTop" :url="item.urlTop">
@@ -37,104 +37,15 @@
 export default {
   watch: {
     navListX(val) {
-      console.log(val / 5.75)
+      // console.log(val / 5.75)
       this.trackSliderX = val / 5.75
     }
   },
+  props: {
+    dataList: Array
+  },
   data() {
     return {
-      navList: [
-        {
-          id: '1',
-          titleTop: '天猫新品',
-          titleBottom: '充值中心',
-          navIconTop: '../../static/imgs/navbar/tianmaoxinpin.png',
-          navIconBottom: '../../static/imgs/navbar/chongzhi.png',
-          urlTop: '#',
-          urlBottom: '#'
-        },
-        {
-          id: '2',
-          titleTop: '今日爆款',
-          titleBottom: '机票酒店',
-          navIconTop: '../../static/imgs/navbar/jinribaokuan.png',
-          navIconBottom: '../../static/imgs/navbar/jipiaojiudian.png',
-          urlTop: '#',
-          urlBottom: '#'
-        },
-        {
-          id: '3',
-          titleTop: '天猫国际',
-          titleBottom: '金币庄园',
-          navIconTop: '../../static/imgs/navbar/tianmaoguoji.png',
-          navIconBottom: '../../static/imgs/navbar/jinbizhuangyuan.png',
-          urlTop: '#',
-          urlBottom: '#'
-        },
-        {
-          id: '4',
-          titleTop: '饿了么',
-          titleBottom: '阿里拍卖',
-          navIconTop: '../../static/imgs/navbar/eleme.png',
-          navIconBottom: '../../static/imgs/navbar/alipaimai.png',
-          urlTop: '#',
-          urlBottom: '#'
-        },
-        {
-          id: '5',
-          titleTop: '天猫超市',
-          titleBottom: '淘宝吃货',
-          navIconTop: '../../static/imgs/navbar/tianmaochaoshi.png',
-          navIconBottom: '../../static/imgs/navbar/taobaochihuo.png',
-          urlTop: '#',
-          urlBottom: '#'
-        },
-        {
-          id: '6',
-          titleTop: '分类',
-          titleBottom: '闲鱼',
-          navIconTop: '../../static/imgs/navbar/fenlei.png',
-          navIconBottom: '../../static/imgs/navbar/xianyu.png',
-          urlBottom: '#',
-          urlTop: '#'
-        },
-        {
-          id: '7',
-          titleTop: '天猫美食',
-          titleBottom: '会员中心',
-          navIconTop: '../../static/imgs/navbar/tianmaomeishi.png',
-          navIconBottom: '../../static/imgs/navbar/huiyuanzhongxin.png',
-          urlBottom: '#',
-          urlTop: '#'
-        },
-        {
-          id: '8',
-          titleTop: '阿里健康',
-          titleBottom: '造点新货',
-          navIconTop: '../../static/imgs/navbar/alijiankang.png',
-          navIconBottom: '../../static/imgs/navbar/zaodianxinhuo.png',
-          urlBottom: '#',
-          urlTop: '#'
-        },
-        {
-          id: '9',
-          titleTop: '口碑生活',
-          titleBottom: '土货鲜食',
-          navIconTop: '../../static/imgs/navbar/koubeishenghuo.png',
-          navIconBottom: '../../static/imgs/navbar/tuhuoxianshi.png',
-          urlBottom: '#',
-          urlTop: '#'
-        },
-        {
-          id: '10',
-          titleTop: '小黑盒',
-          titleBottom: '',
-          navIconTop: '../../static/imgs/navbar/xiaoheihe.png',
-          navIconBottom: '',
-          urlBottom: '',
-          urlTop: '#'
-        }
-      ],
       navListX: 0,
       trackSliderX: 0,
       intervalId: ''
